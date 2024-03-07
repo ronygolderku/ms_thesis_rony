@@ -1,0 +1,25 @@
+---
+title: "Seasonal distribution of Particulate organic carbon (POC) in the Bay of Bengal using satellite imagery"
+author: "Md Rony Golder"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+link-citations: yes
+---
+# Prerequisites {-}
+This thesis is copyright material protected under the Berne Convention, the Copyright Act 1999 and other international and national enactments, in that behalf, on intellectual property. It may not be reproduced by any means, in full or in part, except for short extracts in fair dealings, for research or private study, critical scholarly review or discourse with an acknowledgement, without the written permission of the Directorate of Postgraduate Studies, on behalf of both the author and the Khulna University
+
+# Aknowledgment {-}
+At first, all my admiration goes to the supreme creator and Ruler of the universe, the Almighty Allah for His great mercy to keep me alive and enables me to pursue my education in Fisheries and Marine Resource Technology Discipline as well as to complete my work for the degree of Master of Science in Coastal and marine Science. 
+I would like to express my sincere gratitude and profound appreciation to my honorable supervisor, *Mohammad Abdur Rouf*, Professor and Head, Fisheries and Marine Resource Technology Discipline, for his continuous guidance, valuable suggestions, critical observations and sustained support in writing this thesis. 
+I recall with warm appreciation and great indebtedness or the support, guidance and suggestions extended to me by all my respected teachers in Fisheries and Marine Resource Technology Discipline, Khulna University. 
+I would also like to give special thanks to Bangladesh Navy for collecting water samples from the Bay of Bengal with the ship BNS Turag. I am thankful to Mr. Aminul Islam, a geo-specialist consultant of WorldBank, for his continuous support to work in ArcGIS tools. 
+Special thanks go friends Zareen Afroje for his support for completing my thesis work in laboratory. I would thank to thank Mr. Hriday Molla, a graduate student of Urban and rural Planning Discilpine for his support. I specially thank to my senior Al-Hasan Antu, a post-graduate student of Khulna university for giving me necessary direction to complete my thesis. I would like to acknowledge Khulna University Research Cell (KURC)for their essential supports.I would also like to thank the Ministry of Science and Technology for nominating me National Science and Technolgy (NST) fellowship for this work.
+Finally, I would like to express my very profound gratitude to my parents for all care, unfailing support and continuous encouragement throughout my study. This accomplishment would not have been possible without them.
+
+
+# Dedication {-}
+This thesis is dedicated to my beloved parents for their love patience and understanding, who played an important role along this journey, providing encouragement and moral support when it seemed impossible. May Almighty God bless you!
+
+# Abstract {-}
+Particulate Organic Carbon (POC) plays a vital role in ocean carbon cycle and is linked to many important ocean biogeochemical processes. This study aims to investigate the seasonal variability of POC and its association with Sea Surface Temperature (SST), Chlorophyll-a (Chl-a) and wind vector in the Bay of Bengal (BoB) of Bangladesh part, as well as to validate satellite data with in-situ measurement data. Moderate Resolution Imaging Spectroradiometer (MODIS) Aqua satellite level-3 data of POC, Chl-a and SST were used in this study. Wind vector data were obtained from WindSat Polarimetric Radiometer satellite. Monthly averaged POC (2002-2019) was ranged from 103.08 to 184.22 mg m-³ with an average of 154.28±31.47 mg m-3. The POC was higher (181.80 ±22.34 mg m-³) during the northeast-monsoon (December-February), and lower (136.56±36.24 mg m-³) in the pre-monsoon (March-May). Statistically significant (F (3,202) =18.09; p<0.05) difference of POC was found among the seasons. A very weak inverse relationship was found between POC and SST whereas POC and Chl-a showed a positive relation for all the seasons in the BoB. This study revealed that the POC was very prominent with the wind vectors prevailing northeasterly in northeast and post monsoon and low with the southwesterly wind in southwest and pre monsoon. POC variability was mostly influenced by Chl-a than SST and wind vector for BoB. Variability of POC in BoB is mainly influenced by monsoon effect which causes tremendous rainfall and strong wind. A significant (p<0.05) moderate correlation (r=0.74) was found between the MODIS Aqua satellite data and in-situ observation. Further detailed investigation is required to observe the association of other parameters with POC variability.

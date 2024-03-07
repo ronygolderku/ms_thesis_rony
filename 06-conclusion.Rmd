@@ -1,0 +1,36 @@
+# Conclusion and Recommendation
+
+## Conclusion
+From the present study the following conclusions can be drawn-
+
+- Highest POC was observed during the northeast monsoon, while the lowest was recorded during pre-monsoon months.
+
+- Monthly POC exhibited an inverse relationship with monthly Sea Surface Temperature (SST), with SST having almost no contribution to the variability of POC in the Bay of Bengal.
+
+- A positive correlation was found between Chlorophyll-a (Chl-a) and POC in the Bay of Bengal.
+
+- POC variability was primarily influenced by Chl-a rather than SST, indicating that Chl-a has the greatest contribution to the variation of POC.
+
+- No statistically significant difference was observed between wind speed and POC (p > 0.05).
+
+- POC levels were notably high when the prevailing wind vectors were northeasterly and low during southwesterly winds.
+
+- A moderate positive correlation was identified between in-situ POC values and POC values derived from MODIS-Aqua satellite data.
+
+- There was a negative correlation between in-situ POC and depth in the Bay of Bengal.
+
+- POC demonstrated a decreasing trend from the shelf zone to the deep ocean.
+
+
+##	Recommendation
+
+1. The spatial resolution of MODIS-Aqua satellite is very high. Low-resolution data may provide a more accurate estimation of POC.
+
+2. It is essential to develop a regional algorithm tailored for the best measurement of POC. This will contribute to more accurate and context-specific assessments.
+
+3. There is a need for additional facilities to support more intense in-situ field measurements. Increasing the sampling number will enhance the reliability of the collected data for a comprehensive analysis of POC.
+
+4. Further studies are crucial to address the multitude of factors responsible for POC variability. Understanding these factors will contribute to a more comprehensive and nuanced comprehension of the dynamics influencing POC in the studied region.
+
+
+
