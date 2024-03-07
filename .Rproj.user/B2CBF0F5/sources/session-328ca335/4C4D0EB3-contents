@@ -1,0 +1,121 @@
+# Materials and Methods
+
+## Study area
+
+Study area for the research is the Bay of Bengal (latitude: 16.68-23°N, longitude: 88.56-93°E) which has a depth extended up to approximately 200- 4000 m (Figure 3.1). 
+
+```{r fig.cap='Study area map and in-situ sampling points in the BoB', echo=FALSE}
+
+library(sf)
+library(leaflet)
+study_area <- st_read("C:/Users/admin/Downloads/BD_boundary/BD_new_martime_boundary.shp")
+sample_data <- data.frame(
+  Date = c("02-12-19", "02-12-19", "02-12-19", "02-12-19", "02-12-19", "02-12-19", "06-12-19", "06-12-19", "06-12-19", "06-12-19", "06-12-19", "06-12-19"),
+  Sampling_point = c("S1", "S2", "S3", "S4", "S5", "S6", "S7", "S8", "S9", "S10", "S11", "S12"),
+  Latitude = c(20.00, 20.02, 20.03, 20.05, 20.08, 21.03, 20.98, 20.81, 20.65, 20.48, 20.31, 20.15),
+  Longitude = c(89.47, 89.47, 89.47, 89.47, 89.47, 89.47, 89.53, 89.53, 89.53, 89.53, 89.53, 89.53),
+  In_situ_POC_value = c(72.6, 81.07, 87.12, 93.17, 105.27, 162.14, 75.02, 62.92, 66.55, 71.39, 64.13, 59.29),
+  MODIS_derived_POC = c(68.69, 58, 69, 92, 195, 462, 164, 113, 132, 105, 81, 60),
+  Depth_m = c(1221, 1112, 208, 133, 110, 311, 92, 115, 150, 144, 250, 1130)
+)
+
+sf_sample_data <- st_as_sf(sample_data, coords = c("Longitude", "Latitude"), crs = 4326)
+
+leaflet(sf_sample_data) %>%
+  addProviderTiles(providers$Esri.OceanBasemap) %>%
+  addPolygons(data = study_area, fillOpacity = 0) %>%
+  addMarkers(lng = ~sample_data$Longitude, lat = ~sample_data$Latitude, 
+             popup = paste("Station:", sample_data$Sampling_point, "<br>",
+                           "Sampling Date (dd/mm/yyyy):", sample_data$Date, "<br>",
+                           "Depth (m):", sample_data$Depth_m,"<br>",
+                           "POC (in-situ) [mg/m3]:", sample_data$In_situ_POC_value
+                           ))
+  
+```
+
+## Data Set
+
+In this study, monthly average MODIS Aqua POC ,Chl-a, and SST (11µm daytime) were derived from the ocean color web of NASA (National Aeronautics and Space Administration) (https://oceancolor.gsfc.nasa.gov) from July 2002 to December 2019.  Gridded monthly wind data were collected from the WindSat Polarimetric Radiometer satellite that has 5 discrete bands of  Asia Asia-Pacific Data Research Center (APDRC) of NOAA (National Oceanic and Atmospheric Administration) (http://apdrc.soest.hawaii.edu/) from January 2003 to December 2019 (Table 5).
+
+Bangladesh is in the sub-tropical monsoon climate regime. Based on the considered climate of this country (Khatun et al., 2016), four seasons are recognized as- pre-monsoon (March, April and May), southwest monsoon (June to September), post-monsoon (October and November) and northeast monsoon  (December, January and February) in this study. 
+
+## Data properties
+
+The output unit of particulate organic carbon (POC) is mgm-3, calculated using an empirical relationship derived from in situ measurements of POC and blue-to-green band ratios of remote sensing reflectance’s (Rrs) on the availability of bands centered at 443 nm in the blue region and between 547 and 565 nm in the green region (Stramski et al., 2008).
+
+The algorithm is a power law relationship between a ratio of Rrs and POC:
+
+\[ POC = a \times \left( \frac{{Rrs(443)}}{{Rrs(553)}} \right)^b \]
+
+Where:
+
+- \( a = 203.2 \)
+
+- \( b = -1.034 \)
+
+
+Relationships between the surface concentration of particulate organic carbon and optical properties are discussed detail by (Stramski et al., 2008).
+
+The output unit of the Chl-a value is mgm-3. The Chl-a product combines two algorithms, the O'Reilly band ratio OCx (e.g. chl_oc4) algorithm and the Hu color index (CI)algorithm (chl_hu). For Chl-a retrievals below 0.15 mgm-3, the color index (CI) algorithm is used. For Chl- a retrievals above 0.2 mgm-3, the OCx algorithm is used. In between these values, the CI and OCx algorithm are blended using a weighted approach (NASA, 2014a).
+
+Sea surface temperature (SST) in units of °C (degree Celsius) using the 11um and 12um long wave infrared bands. The algorithm is based on a modified version of the nonlinear SST algorithm of Walton et al., (1998) and is applicable to both MODIS and VIIRS sensors for daytime and nighttime observations (NASA, 2014b). Here, daytime 11 um data were used to analyze SST value.
+
+In case of monthly wind vector data (2003-2019), 10-meter surface wind speed - all weather (m/s) and 10-meter surface wind direction- relative to north (deg) were taken for the investigation of wind on POC image seasonally. Detail data properties are presented in Table 5.
+
+Table 5 Data properties
+
+| Data type | Sensor      | From-date                      | Interval | Number of data |
+|------------|-------------|---------------------------------|----------|-----------------|
+| POC        | MODIS Aqua  | July 2002 - December 2019      | Monthly  | 222             |
+| Chl-a      | MODIS Aqua  | July 2002 - December 2019      | Monthly  | 222             |
+| SST        | MODIS Aqua  | July 2002 - December 2019      | Monthly  | 222             |
+| Wind       | WindSat     | January 2003 - December 2019   | Monthly  | 204             |
+
+
+## Data Processing
+
+POC, Chl-a and SST data were analyzed by satellite image processing software SeaDAS 7.5.3, which is mainly used to process different level (1, 2 or 3) ocean color data. This software is capable to rasterize the standard mapped image (SMI) level-3 satellite image. After rasterization, the image was cropped according to our study area and obtained the statistical information (maximum value, minimum value, mean, median, standard deviation etc.) using ‘Display Statistics’ tool.
+
+WindSat data were analyzed using ArcGIS 10.4 Software which processes the raster images of wind speed and direction into vector form by ‘Make netCDF Feature Layer’ of ‘Multidimensional tools’. After the vector data formation, the layer properties of the data in the study area were symbolized by arrow sign. Then the monthly POC data were opened in ArcGIS 10.4 and cropped the selected study area (BoB) by the tool of ‘Extract by mask’ and overlapped on the POC image.
+
+## In-situ measurement
+
+In-situ POC was estimated following the method prescribed by Parsons et al., (1984). Special apparatus and equipment and regents are listed in **Annex I**.
+
+**Sample collection**: Samples were collected from twelve different sampling stations from latitude 20°00'37.32" N to 21° 10'8" N along about 89° 28' E to 89° 32'  longitude with a 3' (3 min) geographic coordinate (Fig. 1) interval on 2,6 December, 2019 during daytime (8 am-3.30 pm) with BNS Turag, a Ship of  Bangladesh Navy. Water samples were collected using non-toxic opaque sampler from the depth of 0.5 m and stored in opaque bottles (1-liter high-density polyethylene sample bottles). 
+
+**Filtration**: Filtration was carried out within one hour of collection of the sample with a vacuum pump. Nitrocellulose filter of 47 mm diameter and 0.45 µm pore size was used. After filtration of a suitable sample of seawater (usually 0.5 L), full suction to the filter was applied. Releasing the suction after 1 min, 2 ml of sodium sulfate reagent was added, and it was reapplied the suction immediately by adding 2 ml of sodium sulfate once again and the filter under suction was removed. Filtration volume was recorded for each filter and after filtration, filter papers were folded half and wrap in prelabeled aluminum foil and placed in a freezer. The samples were then shifted to the water quality laboratory of Fisheries and Marine Resource Technology Discipline of Khulna University. The laboratory analysis for estimating POC is described below: 
+
+1. Placing the filter in a 30-ml beaker and pressing it into the bottom.
+   - Add 1.0 ml of phosphoric acid and 1.0 ml of distilled water.
+   - Mix and place it on a hot plate at 100°C for 30 min, covered with a watch glass.
+
+2. Add 10 ml sulfuric acid-dichromate oxidant and 2 ml distilled water.
+   - Mix the solution by swirling and place a cover glass over each beaker.
+   - Place it on a hot plate for 60 min at 100°C.
+
+3. Cool the mixture; transfer the solution and glass fiber filter to a suitably sized graduated cylinder.
+   - Rinse the sides of the beaker with distilled water.
+   - Make up the volume with distilled water in the graduated cylinder.
+   - Stopper and mix by inverting; allow it to stand at room temperature to cool and to allow the filter to settle at the bottom of the cylinder.
+
+4. Measure the extinction of a blank solution against the sample at 440 nm using a 1cm cuvette path length.
+
+5. Correct the resulting extinction for the absorbance of trivalent chromium by the expression:
+   \[ E = 1.1 \times E_f \]
+   Where:
+   - \( E \): Extinction for trivalent chromium
+   - \( E_f \): Extinction difference between the sample and blank solution.
+
+6. Estimate POC in mgm\(^{-3}\) using the following formula:
+   \[ POC (\mu g/l) = \frac{{E \times F \times v}}{{V}} \]
+   Where:
+   - \( F \): Calibration factor = 275
+   - \( V \): Volume of seawater filtered in liters
+   - \( v \): Volume of oxidant.
+   
+
+## Data analysis
+
+All statistical analyses including correlation, regression, one-way ANOVA and post-hoc test was performed using R- studio and SPSS.
+
