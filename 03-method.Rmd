@@ -28,7 +28,7 @@ leaflet(sf_sample_data) %>%
              popup = paste("Station:", sample_data$Sampling_point, "<br>",
                            "Sampling Date (dd/mm/yyyy):", sample_data$Date, "<br>",
                            "Depth (m):", sample_data$Depth_m,"<br>",
-                           "POC (in-situ) [mg/m-3]:", sample_data$In_situ_POC_value
+                           "POC (in-situ) [mg/m3]:", sample_data$In_situ_POC_value
                            ))
   
 ```
